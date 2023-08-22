@@ -1,0 +1,19 @@
+name: RPChat
+version: '${project.version}'
+main: copernicus.rpchat.RPChat
+api-version: 1.19
+authors: [ Copernicus ]
+description: RP Chat
+commands:
+  global:
+    description: joins global chat
+    usage: /global
+    aliases: g
+  local:
+    description: joins local chat
+    usage: /local
+    aliases: l
+  staff:
+    description: joins staff chat
+    usage: /staff
+    aliases: s
