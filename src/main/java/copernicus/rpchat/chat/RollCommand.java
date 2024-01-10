@@ -1,9 +1,11 @@
 package copernicus.rpchat.chat;
 
+import copernicus.rpchat.data.*;
 import me.kodysimpson.simpapi.command.*;
 import org.bukkit.*;
 import org.bukkit.command.*;
 import org.bukkit.entity.*;
+import org.bukkit.event.player.*;
 
 import java.util.*;
 
@@ -42,14 +44,21 @@ public class RollCommand extends SubCommand {
             }
 
             int maxNumber = Integer.parseInt(strings[1]);
-            if (maxNumber <= 1) {
+            if (strings[1] == null) {
+                maxNumber = 1;
+            }
+            if (maxNumber < 1 ) {
                 commandSender.sendMessage(ChatColor.RED + "Please specify a number greater than 1.");
                 return;
             }
 
-            Random random = new Random();
-            int rolledNumber = random.nextInt(0, maxNumber + 1);
+            int rolledNumber = (int)(Math.random() * maxNumber);
             commandSender.sendMessage(ChatColor.GREEN + "You rolled a " + rolledNumber + "!");
+            for (Player p : Bukkit.getOnlinePlayers()) {
+                if (p.getLocation().distance(((Player) commandSender).getLocation()) <= Config.getConfig().getInt("local-chat-radius") && !p.equals(commandSender)) {
+                    p.sendMessage(ChatColor.GREEN + commandSender.getName() + " rolled a " + rolledNumber + "!");
+                }
+            }
         }
     }
 

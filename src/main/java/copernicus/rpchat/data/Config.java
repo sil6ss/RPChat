@@ -25,6 +25,11 @@ public class Config {
             }
         }
         config = YamlConfiguration.loadConfiguration(cFile);
+        config.addDefault("local-chat-radius", 50);
+        config.addDefault("serverPrefix", "&8&l[&cTest Server&8&l] ");
+        config.addDefault("localPrefix", "&8[&7OOC&8] ");
+        config.addDefault("roleplayPrefix", "&4[&cL&4] ");
+        config.addDefault("staffFormat", "&7[&aS&7] ");
     }
 
     public static FileConfiguration getConfig() {
@@ -49,7 +54,7 @@ public class Config {
     public static void reload() {
         RPChat.getInstance().dataLoader.saveData();
         Bukkit.getPluginManager().disablePlugin(RPChat.getInstance());
-        Objects.requireNonNull(Bukkit.getPluginManager().getPlugin(RPChat.getInstance().getPluginMeta().getName())).reloadConfig();
+        Bukkit.getPluginManager().getPlugin("RPChat").reloadConfig();
         Bukkit.getPluginManager().enablePlugin(RPChat.getInstance());
         RPChat.getInstance().dataLoader.loadData();
     }

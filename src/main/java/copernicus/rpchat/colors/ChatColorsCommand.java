@@ -33,7 +33,7 @@ public class ChatColorsCommand extends SubCommand {
 
     @Override
     public void perform(CommandSender commandSender, String[] strings) {
-        if (commandSender.hasPermission("rpchat.command.colors") || commandSender.hasPermission("rpchat.admin")) {
+        if (commandSender.hasPermission("rpchat.command.colors") || commandSender.hasPermission("rpchat.adminaaa")) {
             try {
                 MenuManager.openMenu(PrimaryChatColorsMenu.class, (Player) commandSender);
             } catch (MenuManagerException e) {

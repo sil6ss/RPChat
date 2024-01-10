@@ -2,7 +2,7 @@ package copernicus.rpchat.chat;
 
 import copernicus.rpchat.*;
 import copernicus.rpchat.data.*;
-import io.papermc.paper.event.player.*;
+import me.kodysimpson.simpapi.colors.*;
 import org.bukkit.*;
 import org.bukkit.entity.*;
 import org.bukkit.event.*;
@@ -12,7 +12,7 @@ import java.util.*;
 
 public class ChatListener implements Listener {
 
-    @SuppressWarnings("deprecation")
+
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
@@ -21,9 +21,9 @@ public class ChatListener implements Listener {
         net.md_5.bungee.api.ChatColor secondaryColor = net.md_5.bungee.api.ChatColor.WHITE;
 
         int localChatRadius = Config.getConfig().getInt("local-chat-radius");
-        String localPrefix = ChatColor.translateAlternateColorCodes('&', Config.getConfig().getString("localPrefix"));
-        String roleplayPrefix = ChatColor.translateAlternateColorCodes('&', Config.getConfig().getString("roleplayPrefix"));
-        String staffFormat = ChatColor.translateAlternateColorCodes('&', Config.getConfig().getString("staffFormat"));
+        String localPrefix = ColorTranslator.translateColorCodes(Config.getConfig().getString("localPrefix"));
+        String roleplayPrefix = ColorTranslator.translateColorCodes(Config.getConfig().getString("roleplayPrefix"));
+        String staffFormat = ColorTranslator.translateColorCodes(Config.getConfig().getString("staffFormat"));
 
 
         if (RPChat.getInstance().primaryRoleplayColors.containsKey(playerUUID)) {
